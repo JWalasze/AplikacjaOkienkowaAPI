@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic_cities.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Data_city.cs" />
     <Compile Include="HTTP.cs" />
@@ -68,6 +69,10 @@
     <Compile Include="Migrations\202203282005170_KeyMigration.cs" />
     <Compile Include="Migrations\202203282005170_KeyMigration.designer.cs">
       <DependentUpon>202203282005170_KeyMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203282241006_SecondMigration.cs" />
+    <Compile Include="Migrations\202203282241006_SecondMigration.designer.cs">
+      <DependentUpon>202203282241006_SecondMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -83,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203282005170_KeyMigration.resx">
       <DependentUpon>202203282005170_KeyMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203282241006_SecondMigration.resx">
+      <DependentUpon>202203282241006_SecondMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

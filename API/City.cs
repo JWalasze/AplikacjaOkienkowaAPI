@@ -13,7 +13,21 @@ namespace API
     {
         public virtual DbSet<Data_city> Cities { get; set; }
         
-        //public virtual DbSet<string> BasicCities { get; set; }
+        public virtual DbSet<Basic_cities> BasicCities { get; set; }
+
+        public void addNewBasicCity(string city_name)
+        {
+            var cities = (from city in this.BasicCities select city).ToList<Basic_cities>();
+            foreach (var c in cities)
+            {
+                if (c.CityName == city_name)
+                {
+                    return;
+                }
+            }
+            this.BasicCities.Add(new Basic_cities { CityName = city_name});
+            this.SaveChanges();
+        }
 
         public void addNewRecord(JSON_localization API_data)
         {
@@ -50,6 +64,7 @@ namespace API
             this.SaveChanges();
         }
 
+        //Konsolowa - trzeba przerobić na okienkową
         public void showAllRecords()
         {
             var cities = (from city in this.Cities select city).ToList<Data_city>();
@@ -57,8 +72,14 @@ namespace API
             {
                 Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
             }
+            var b_cities = (from city in this.BasicCities select city).ToList<Basic_cities>();
+            foreach (var city in b_cities)
+            {
+                Console.WriteLine("Nazwa basic miasta: {0}", city.CityName);
+            }
         }
 
+        //-||-
         public void showSelectedRecordsByCity(string city_name)
         {
             var cities = (from city in this.Cities where city.city_name == city_name select city).ToList<Data_city>();
@@ -68,6 +89,7 @@ namespace API
             }
         }
 
+        //-||-
         public void showSelectedRecordsByAqi(int aqi, string mark)
         {
             if (mark == ">")
@@ -98,6 +120,7 @@ namespace API
             }
         }
 
+        //-||-
         public void sortByAqi()
         {
             var cities = (from city in this.Cities orderby city.aqi select city).ToList<Data_city>();
@@ -115,10 +138,10 @@ namespace API
 
         public void makeEssentialMeasurements()
         {
-            var cities = (from city in this.Cities select city).ToList<Data_city>().Distinct();
+            var cities = (from city in this.BasicCities select city).ToList<Basic_cities>();
             foreach (var city in cities)
             {
-                Task<JSON_localization> API = HTTP.MakeRequest(city.city_name);
+                Task<JSON_localization> API = HTTP.MakeRequest(city.CityName);
                 this.addNewRecord(API.Result);
             }
         }
