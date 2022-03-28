@@ -61,12 +61,29 @@
     <Compile Include="HTTP.cs" />
     <Compile Include="JSON_data.cs" />
     <Compile Include="JSON_localization.cs" />
+    <Compile Include="Migrations\202203281959510_Initial.cs" />
+    <Compile Include="Migrations\202203281959510_Initial.designer.cs">
+      <DependentUpon>202203281959510_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203282005170_KeyMigration.cs" />
+    <Compile Include="Migrations\202203282005170_KeyMigration.designer.cs">
+      <DependentUpon>202203282005170_KeyMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202203281959510_Initial.resx">
+      <DependentUpon>202203281959510_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203282005170_KeyMigration.resx">
+      <DependentUpon>202203282005170_KeyMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

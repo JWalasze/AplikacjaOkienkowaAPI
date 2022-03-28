@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace API
 {
@@ -12,18 +13,20 @@ namespace API
     {
         public virtual DbSet<Data_city> Cities { get; set; }
         
-        public void addNewRecord()
+        //public virtual DbSet<string> BasicCities { get; set; }
+
+        public void addNewRecord(JSON_localization API_data)
         {
             this.Cities.Add(new Data_city
             {
-                city_name = HTTP.API_data.city_name,
-                country_code = HTTP.API_data.city_name,
-                timezone = HTTP.API_data.timezone,
-                aqi = HTTP.API_data.data[0].aqi,
-                co = HTTP.API_data.data[0].co,
-                o3 = HTTP.API_data.data[0].o3,
-                no2 = HTTP.API_data.data[0].no2,
-                so2 = HTTP.API_data.data[0].so2,
+                city_name = API_data.city_name,
+                country_code = API_data.city_name,
+                timezone = API_data.timezone,
+                aqi = API_data.data[0].aqi,
+                co = API_data.data[0].co,
+                o3 = API_data.data[0].o3,
+                no2 = API_data.data[0].no2,
+                so2 = API_data.data[0].so2,
                 _date = DateTime.Now,
                 
             });
@@ -52,7 +55,7 @@ namespace API
             var cities = (from city in this.Cities select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
             }
         }
 
@@ -61,7 +64,7 @@ namespace API
             var cities = (from city in this.Cities where city.city_name == city_name select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
             }
         }
 
@@ -101,6 +104,22 @@ namespace API
             foreach (var city in cities)
             {
                 Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+            }
+        }
+
+        public int getCityNumberOfMeasurements(string _city_name)
+        {
+            var cities = (from city in this.Cities where city.city_name == _city_name select city).ToList<Data_city>();
+            return cities.Count();
+        }
+
+        public void makeEssentialMeasurements()
+        {
+            var cities = (from city in this.Cities select city).ToList<Data_city>().Distinct();
+            foreach (var city in cities)
+            {
+                Task<JSON_localization> API = HTTP.MakeRequest(city.city_name);
+                this.addNewRecord(API.Result);
             }
         }
     }

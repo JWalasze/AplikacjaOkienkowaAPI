@@ -26,21 +26,25 @@ namespace API
             city_list.Add("Beijing");
             city_list.Add("Londyn");
             city_list.Add("Warszawa");
-            HTTP.MakeRequest("Beijing");
-            Console.ReadLine();
-            Console.WriteLine(HTTP.API_data.data[0].aqi.ToString());
-            Console.ReadLine();
 
-            foreach (var item in city_list)
+            /*foreach (var item in city_list)
             {
                 HTTP.MakeRequest(item);
                 Console.ReadLine();
-                HTTP.ShowData();
+                Console.WriteLine(item);
                 context.addNewRecord();
                 Console.ReadLine();
-            }
-
+            }*/
+            //context.makeEssentialMeasurements();
+            //Console.WriteLine("Tutaj");
+            /*for (int i = 76; i < 89; i++)
+            {
+                context.removeRecord(i);
+            }*/
+            //Console.ReadLine();
             context.showAllRecords();
+            Console.ReadLine();
+            Console.WriteLine(context.getCityNumberOfMeasurements("Warszawa"));
             Console.ReadLine();
             
         }
