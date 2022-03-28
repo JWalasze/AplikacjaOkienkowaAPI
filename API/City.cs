@@ -23,7 +23,9 @@ namespace API
                 co = HTTP.API_data.data[0].co,
                 o3 = HTTP.API_data.data[0].o3,
                 no2 = HTTP.API_data.data[0].no2,
-                so2 = HTTP.API_data.data[0].so2
+                so2 = HTTP.API_data.data[0].so2,
+                _date = DateTime.Now,
+                
             });
             this.SaveChanges();
         }

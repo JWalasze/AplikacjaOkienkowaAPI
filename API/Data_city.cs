@@ -18,5 +18,6 @@ namespace API
         public double o3 { get; set; }
         public double so2 { get; set; }
         public double no2 { get; set; }
+        public DateTime _date { get; set; }
     }
 }
