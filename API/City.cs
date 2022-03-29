@@ -64,7 +64,6 @@ namespace API
             this.SaveChanges();
         }
 
-        //Konsolowa - trzeba przerobić na okienkową
         public string getAllRecords()
         {
             string str = String.Empty;
@@ -91,7 +90,6 @@ namespace API
             return str;
         }
 
-        //-||-
         public string getSelectedRecordsByCity(string city_name)
         {
             string str = String.Empty;
@@ -105,7 +103,6 @@ namespace API
             return str;
         }
 
-        //-||-
         public string getSelectedRecordsByAqi(int aqi, string mark)
         {
             string str = String.Empty;
@@ -146,7 +143,6 @@ namespace API
             }
         }
 
-        //-||-
         public string getSortByAqi()
         {
             string str = String.Empty;
