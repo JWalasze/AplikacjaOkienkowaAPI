@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using Newtonsoft.Json;
 using System.Threading;
+using System.Net.Http;
 
 namespace API
 {
@@ -70,7 +71,6 @@ namespace API
             var cities = (from city in this.Cities select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
                 str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
                 str += Environment.NewLine;
             }
@@ -83,8 +83,7 @@ namespace API
             var b_cities = (from city in this.BasicCities select city).ToList<Basic_cities>();
             foreach (var city in b_cities)
             {
-                //Console.WriteLine("Nazwa basic miasta: {0}", city.CityName);
-                str += $"Nazwa basic miasta: {city.CityName}";
+                str += $"Nazwa 'basic' miasta: {city.CityName}";
                 str += Environment.NewLine;
             }
             return str;
@@ -96,7 +95,6 @@ namespace API
             var cities = (from city in this.Cities where city.city_name == city_name select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
                 str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
                 str += Environment.NewLine;
             }
@@ -111,7 +109,6 @@ namespace API
                 var cities = (from city in this.Cities where city.aqi > aqi orderby city.aqi select city).ToList<Data_city>();
                 foreach (var city in cities)
                 {
-                    //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
                     str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
                     str += Environment.NewLine;
                 }
@@ -121,7 +118,6 @@ namespace API
             {
                 var cities = (from city in this.Cities where city.aqi < aqi orderby city.aqi select city).ToList<Data_city>(); foreach (var city in cities)
                 {
-                    //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
                     str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
                     str += Environment.NewLine;
                 }
@@ -131,7 +127,6 @@ namespace API
             {
                 var cities = (from city in this.Cities where city.aqi == aqi orderby city.aqi select city).ToList<Data_city>(); foreach (var city in cities)
                 {
-                    //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
                     str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
                     str += Environment.NewLine;
                 }
@@ -149,7 +144,6 @@ namespace API
             var cities = (from city in this.Cities orderby city.aqi select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
                 str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
                 str += Environment.NewLine;
             }
@@ -162,13 +156,18 @@ namespace API
             return cities.Count();
         }
 
-        public void makeEssentialMeasurements()
+        public async void makeEssentialMeasurements()
         {
             var cities = (from city in this.BasicCities select city).ToList<Basic_cities>();
             foreach (var city in cities)
             {
-                Task<JSON_localization> API = HTTP.MakeRequest(city.CityName);
-                this.addNewRecord(API.Result);
+                var city_2_remove = this.Cities.First(x => x.city_name == city.CityName);
+                this.removeRecord(city_2_remove.ID);
+                string call = "https://api.weatherbit.io/v2.0/current/airquality?city=" + city.CityName + "&country=&key=039e380a5d124b1985909a1375c64c4d";
+                HttpClient client = new HttpClient();
+                string response = await client.GetStringAsync(call);
+                JSON_localization API_data = JsonConvert.DeserializeObject<JSON_localization>(response);
+                this.addNewRecord(API_data);
             }
         }
     }

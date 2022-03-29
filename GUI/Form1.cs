@@ -8,30 +8,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using API;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Threading;
 
 namespace GUI
 {
     public partial class Form1 : Form
     {
+        City context;
+
         public Form1()
         {
             InitializeComponent();
+            context = new City();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             string city_name = textBox1.Text;
-            Task<JSON_localization> task = HTTP.MakeRequest("Paris");
+            string optional_country = textBox2.Text;
+            string call = "https://api.weatherbit.io/v2.0/current/airquality?city=" + city_name + "&country=" + optional_country + "&key=039e380a5d124b1985909a1375c64c4d";
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(call);
+            JSON_localization API_data = JsonConvert.DeserializeObject<JSON_localization>(response);
+
             string str = string.Empty;
-            str += $"Kraj: {task.Result.country_code}, ";
-            str += $"nazwa miasta: {task.Result.city_name}" + Environment.NewLine;
+            str += $"Kraj: {API_data.country_code}, ";
+            str += $"nazwa miasta: {API_data.city_name}" + Environment.NewLine;
             str += $"Data pobrania: {DateTime.Now}" + Environment.NewLine;
-            str += $"Aqi (air quality index): {task.Result.data[0].aqi}" + Environment.NewLine;
-            str += $"Poziom zanieczyszczenia powietrza: " + aqiLevel(task.Result.data[0].aqi) + Environment.NewLine;
-            str += $"Zawartość CO: {task.Result.data[0].co} ug/m3" + Environment.NewLine;
-            str += $"Zawartość O3: {task.Result.data[0].o3} ug/m3" + Environment.NewLine;
-            str += $"Zawartość SO2: {task.Result.data[0].so2} ug/m3" + Environment.NewLine;
-            str += $"Zawartość NO2: {task.Result.data[0].no2} ug/m3" + Environment.NewLine;
+            str += $"Aqi (air quality index): {API_data.data[0].aqi}" + Environment.NewLine;
+            str += $"Poziom zanieczyszczenia powietrza: " + aqiLevel(API_data.data[0].aqi) + Environment.NewLine;
+            str += $"Zawartość CO: {API_data.data[0].co} ug/m3" + Environment.NewLine;
+            str += $"Zawartość O3: {API_data.data[0].o3} ug/m3" + Environment.NewLine;
+            str += $"Zawartość SO2: {API_data.data[0].so2} ug/m3" + Environment.NewLine;
+            str += $"Zawartość NO2: {API_data.data[0].no2} ug/m3" + Environment.NewLine;
             richTextBox1.Text = str;
         }
 
@@ -77,6 +88,26 @@ namespace GUI
             }
         }
 
-        //private 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            richTextBox2.Text = context.getAllRecords();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            context.makeEssentialMeasurements();
+            richTextBox2.Text = context.getAllRecords(); 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var cities = (from city in context.BasicCities select city).ToList<Basic_cities>();
+            string str = string.Empty;
+            foreach (var city in cities)
+            {
+                str += context.getCityNumberOfMeasurements(city.CityName).ToString() + Environment.NewLine;
+            }
+            richTextBox2.Text = str;
+        }
     }
 }
