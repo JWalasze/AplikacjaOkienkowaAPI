@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace API
 {
-    internal class JSON_localization
+    public class JSON_localization
     {
         public List<JSON_data> data { get; set; }
         public string city_name { get; set; }

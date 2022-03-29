@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace API
 {
-    internal class Data_city
+    public class Data_city
     {
         public int ID { get; set; }
         public string city_name { get; set; }

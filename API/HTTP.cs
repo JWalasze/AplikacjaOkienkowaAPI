@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace API
 {
-    internal static class HTTP
+    public static class HTTP
     {
         static HttpClient client = new HttpClient();
        

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API
 {
-    internal class Basic_cities
+    public class Basic_cities
     {
         [Key]
         public string CityName { get; set; }

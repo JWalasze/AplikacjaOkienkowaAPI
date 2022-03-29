@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace API
 {
-    internal class City : DbContext
+    public class City : DbContext
     {
         public virtual DbSet<Data_city> Cities { get; set; }
         
@@ -25,7 +25,7 @@ namespace API
                     return;
                 }
             }
-            this.BasicCities.Add(new Basic_cities { CityName = city_name});
+            this.BasicCities.Add(new Basic_cities {CityName = city_name});
             this.SaveChanges();
         }
 
@@ -34,7 +34,7 @@ namespace API
             this.Cities.Add(new Data_city
             {
                 city_name = API_data.city_name,
-                country_code = API_data.city_name,
+                country_code = API_data.country_code,
                 timezone = API_data.timezone,
                 aqi = API_data.data[0].aqi,
                 co = API_data.data[0].co,

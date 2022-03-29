@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace API
 {
-    internal class JSON_data
+    public class JSON_data
     {
         public int mold_level { get; set; }
         public int aqi { get; set; }

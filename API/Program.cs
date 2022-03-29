@@ -21,6 +21,11 @@ namespace API
                 context.addNewRecord(API.Result);
                 //Console.ReadLine();
             }*/
+            Task<JSON_localization> API = HTTP.MakeRequest("Lahore");
+            Console.WriteLine(API.Result.city_name);
+            Console.WriteLine(API.Result.data[0].co);
+            Console.WriteLine(API.Result.data[0].aqi);
+            Console.ReadLine();
             /*for (int i = 76; i < 89; i++)
             {
                 context.removeRecord(i);
