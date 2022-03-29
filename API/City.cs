@@ -65,54 +65,80 @@ namespace API
         }
 
         //Konsolowa - trzeba przerobić na okienkową
-        public void showAllRecords()
+        public string getAllRecords()
         {
+            string str = String.Empty;
             var cities = (from city in this.Cities select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
+                //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
+                str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
+                str += Environment.NewLine;
             }
+            return str;
+        }
+
+        public string getAllBasicCities()
+        {
+            string str = String.Empty;
             var b_cities = (from city in this.BasicCities select city).ToList<Basic_cities>();
             foreach (var city in b_cities)
             {
-                Console.WriteLine("Nazwa basic miasta: {0}", city.CityName);
+                //Console.WriteLine("Nazwa basic miasta: {0}", city.CityName);
+                str += $"Nazwa basic miasta: {city.CityName}";
+                str += Environment.NewLine;
             }
+            return str;
         }
 
         //-||-
-        public void showSelectedRecordsByCity(string city_name)
+        public string getSelectedRecordsByCity(string city_name)
         {
+            string str = String.Empty;
             var cities = (from city in this.Cities where city.city_name == city_name select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
+                //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}, Data pomiaru: {4}", city.ID, city.city_name, city.aqi, city.timezone, city._date);
+                str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
+                str += Environment.NewLine;
             }
+            return str;
         }
 
         //-||-
-        public void showSelectedRecordsByAqi(int aqi, string mark)
+        public string getSelectedRecordsByAqi(int aqi, string mark)
         {
+            string str = String.Empty;
             if (mark == ">")
             {
                 var cities = (from city in this.Cities where city.aqi > aqi orderby city.aqi select city).ToList<Data_city>();
                 foreach (var city in cities)
                 {
-                    Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                    //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                    str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
+                    str += Environment.NewLine;
                 }
+                return str;
             }
             else if (mark == "<")
             {
                 var cities = (from city in this.Cities where city.aqi < aqi orderby city.aqi select city).ToList<Data_city>(); foreach (var city in cities)
                 {
-                    Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                    //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                    str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
+                    str += Environment.NewLine;
                 }
+                return str;
             }
             else if (mark == "=" || mark == "==")
             {
                 var cities = (from city in this.Cities where city.aqi == aqi orderby city.aqi select city).ToList<Data_city>(); foreach (var city in cities)
                 {
-                    Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                    //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                    str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
+                    str += Environment.NewLine;
                 }
+                return str;
             }
             else
             {
@@ -121,13 +147,17 @@ namespace API
         }
 
         //-||-
-        public void sortByAqi()
+        public string getSortByAqi()
         {
+            string str = String.Empty;
             var cities = (from city in this.Cities orderby city.aqi select city).ToList<Data_city>();
             foreach (var city in cities)
             {
-                Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                //Console.WriteLine("ID: {0}, City: {1}, Aqi: {2}, Timezone: {3}", city.ID, city.city_name, city.aqi, city.timezone);
+                str += $"ID: {city.ID}, City: {city.city_name}, Aqi: {city.aqi}, Timezone: {city.timezone}, Data pomiaru: {city._date}";
+                str += Environment.NewLine;
             }
+            return str;
         }
 
         public int getCityNumberOfMeasurements(string _city_name)

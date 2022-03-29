@@ -48,7 +48,7 @@ namespace API
             }*/
             //context.addNewBasicCity("Ateny");
             
-            context.showAllRecords();
+            context.getAllRecords();
             Console.ReadLine();
             Console.WriteLine(context.getCityNumberOfMeasurements("Lahore"));
             Console.ReadLine();
