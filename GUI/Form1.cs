@@ -11,6 +11,7 @@ using API;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading;
+//using System.Web.UI.DataVisualization.Charting;
 
 namespace GUI
 {
@@ -90,24 +91,79 @@ namespace GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            richTextBox2.Text = context.getAllRecords();
+            string city_name = "Ankara";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            context.makeEssentialMeasurements();
-            richTextBox2.Text = context.getAllRecords(); 
+            string city_name = "Ateny";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var cities = (from city in context.BasicCities select city).ToList<Basic_cities>();
-            string str = string.Empty;
-            foreach (var city in cities)
-            {
-                str += context.getCityNumberOfMeasurements(city.CityName).ToString() + Environment.NewLine;
-            }
-            richTextBox2.Text = str;
+            string city_name = "Beijing";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string city_name = "Lahore";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string city_name = "Londyn";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string city_name = "Los Angeles";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string city_name = "New York";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string city_name = "Paryż";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string city_name = "Rzym";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            string city_name = "Warszawa";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string city_name = "Wrocław";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string city_name = "Wuhan";
+            richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
         }
     }
 }
