@@ -161,8 +161,12 @@ namespace API
             var cities = (from city in this.BasicCities select city).ToList<Basic_cities>();
             foreach (var city in cities)
             {
-                var city_2_remove = this.Cities.First(x => x.city_name == city.CityName);
-                this.removeRecord(city_2_remove.ID);
+                int count = this.getCityNumberOfMeasurements(city.CityName);
+                if (count >= 7)
+                {
+                    var city_2_remove = this.Cities.First(x => x.city_name == city.CityName);
+                    this.removeRecord(city_2_remove.ID);
+                }
                 string call = "https://api.weatherbit.io/v2.0/current/airquality?city=" + city.CityName + "&country=&key=039e380a5d124b1985909a1375c64c4d";
                 HttpClient client = new HttpClient();
                 string response = await client.GetStringAsync(call);

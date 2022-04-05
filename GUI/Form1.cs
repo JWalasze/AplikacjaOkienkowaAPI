@@ -11,6 +11,8 @@ using API;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading;
+//using System.Windows.Controls;
+
 //using System.Web.UI.DataVisualization.Charting;
 
 namespace GUI
@@ -93,77 +95,90 @@ namespace GUI
         {
             string city_name = "Ankara";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button2.BackColor = Color.DarkGoldenrod;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             string city_name = "Ateny";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button3.BackColor = Color.DarkGoldenrod;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             string city_name = "Beijing";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            button4.BackColor = Color.DarkGoldenrod;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             string city_name = "Lahore";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button5.BackColor = Color.DarkGoldenrod;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             string city_name = "Londyn";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button6.BackColor = Color.DarkGoldenrod;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             string city_name = "Los Angeles";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button7.BackColor = Color.DarkGoldenrod;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             string city_name = "New York";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button8.BackColor = Color.DarkGoldenrod;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             string city_name = "Paryż";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button9.BackColor = Color.DarkGoldenrod;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             string city_name = "Rzym";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button10.BackColor = Color.DarkGoldenrod;
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             string city_name = "Warszawa";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button11.BackColor = Color.DarkGoldenrod;
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             string city_name = "Wrocław";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button12.BackColor = Color.DarkGoldenrod;
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             string city_name = "Wuhan";
             richTextBox2.Text = context.getSelectedRecordsByCity(city_name);
+            button13.BackColor = Color.DarkGoldenrod;
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            context.makeEssentialMeasurements();
+        }
+
     }
 }

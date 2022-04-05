@@ -47,13 +47,17 @@
             this.button12 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(147, 137);
+            this.button1.Location = new System.Drawing.Point(110, 111);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(56, 19);
             this.button1.TabIndex = 0;
             this.button1.Text = "ok";
             this.button1.UseVisualStyleBackColor = true;
@@ -62,40 +66,45 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 118);
+            this.label1.Location = new System.Drawing.Point(28, 96);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Podaj nazwę miasta";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(41, 165);
+            this.richTextBox1.Location = new System.Drawing.Point(31, 134);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(232, 257);
+            this.richTextBox1.Size = new System.Drawing.Size(175, 210);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(41, 137);
+            this.textBox1.Location = new System.Drawing.Point(31, 111);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.Size = new System.Drawing.Size(76, 20);
             this.textBox1.TabIndex = 3;
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(375, 58);
+            this.richTextBox2.Location = new System.Drawing.Point(272, 47);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(319, 343);
+            this.richTextBox2.Size = new System.Drawing.Size(240, 279);
             this.richTextBox2.TabIndex = 4;
             this.richTextBox2.Text = "";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(700, 58);
+            this.button2.Location = new System.Drawing.Point(515, 47);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 23);
+            this.button2.Size = new System.Drawing.Size(80, 19);
             this.button2.TabIndex = 5;
             this.button2.Text = "Ankara";
             this.button2.UseVisualStyleBackColor = true;
@@ -103,9 +112,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(700, 87);
+            this.button3.Location = new System.Drawing.Point(515, 71);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 23);
+            this.button3.Size = new System.Drawing.Size(80, 19);
             this.button3.TabIndex = 6;
             this.button3.Text = "Ateny";
             this.button3.UseVisualStyleBackColor = true;
@@ -113,9 +123,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(700, 116);
+            this.button4.Location = new System.Drawing.Point(515, 94);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 25);
+            this.button4.Size = new System.Drawing.Size(80, 20);
             this.button4.TabIndex = 7;
             this.button4.Text = "Beijing";
             this.button4.UseVisualStyleBackColor = true;
@@ -124,17 +135,19 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(158, 6);
+            this.label2.Location = new System.Drawing.Point(258, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(353, 16);
+            this.label2.Size = new System.Drawing.Size(281, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Dowiedź się jaka jest czystość powietrza w Twoim mieście";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(700, 147);
+            this.button5.Location = new System.Drawing.Point(515, 119);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(94, 23);
+            this.button5.Size = new System.Drawing.Size(80, 19);
             this.button5.TabIndex = 9;
             this.button5.Text = "Lahore";
             this.button5.UseVisualStyleBackColor = true;
@@ -142,9 +155,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(700, 176);
+            this.button6.Location = new System.Drawing.Point(515, 143);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 23);
+            this.button6.Size = new System.Drawing.Size(80, 19);
             this.button6.TabIndex = 10;
             this.button6.Text = "Londyn";
             this.button6.UseVisualStyleBackColor = true;
@@ -152,9 +166,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(700, 205);
+            this.button7.Location = new System.Drawing.Point(515, 167);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(94, 23);
+            this.button7.Size = new System.Drawing.Size(80, 19);
             this.button7.TabIndex = 11;
             this.button7.Text = "Los Angeles";
             this.button7.UseVisualStyleBackColor = true;
@@ -162,9 +177,10 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(700, 234);
+            this.button8.Location = new System.Drawing.Point(515, 190);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(94, 23);
+            this.button8.Size = new System.Drawing.Size(80, 19);
             this.button8.TabIndex = 12;
             this.button8.Text = "New York";
             this.button8.UseVisualStyleBackColor = true;
@@ -172,9 +188,10 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(700, 263);
+            this.button9.Location = new System.Drawing.Point(515, 214);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(94, 23);
+            this.button9.Size = new System.Drawing.Size(80, 19);
             this.button9.TabIndex = 13;
             this.button9.Text = "Paryż";
             this.button9.UseVisualStyleBackColor = true;
@@ -182,9 +199,10 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(700, 292);
+            this.button10.Location = new System.Drawing.Point(515, 237);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(94, 23);
+            this.button10.Size = new System.Drawing.Size(80, 19);
             this.button10.TabIndex = 14;
             this.button10.Text = "Rzym";
             this.button10.UseVisualStyleBackColor = true;
@@ -192,9 +210,10 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(700, 321);
+            this.button11.Location = new System.Drawing.Point(515, 261);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(94, 23);
+            this.button11.Size = new System.Drawing.Size(80, 19);
             this.button11.TabIndex = 15;
             this.button11.Text = "Warszawa";
             this.button11.UseVisualStyleBackColor = true;
@@ -202,9 +221,10 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(700, 350);
+            this.button12.Location = new System.Drawing.Point(515, 284);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(94, 23);
+            this.button12.Size = new System.Drawing.Size(80, 19);
             this.button12.TabIndex = 16;
             this.button12.Text = "Wrocław";
             this.button12.UseVisualStyleBackColor = true;
@@ -212,26 +232,61 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(74, 59);
+            this.textBox2.Location = new System.Drawing.Point(31, 71);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.Size = new System.Drawing.Size(76, 20);
             this.textBox2.TabIndex = 17;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(700, 379);
+            this.button13.Location = new System.Drawing.Point(515, 308);
+            this.button13.Margin = new System.Windows.Forms.Padding(2);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(94, 22);
-            this.button13.TabIndex = 19;
+            this.button13.Size = new System.Drawing.Size(80, 18);
+            this.button13.TabIndex = 16;
             this.button13.Text = "Wuhan";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(31, 24);
+            this.button14.Margin = new System.Windows.Forms.Padding(2);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(56, 19);
+            this.button14.TabIndex = 20;
+            this.button14.Text = "odśwież";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(28, 9);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(149, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Pobierz nowe rekordy do bazy";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 13);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Podaj kraj (opcjonalnie)";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(620, 366);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button12);
@@ -251,9 +306,9 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,6 +335,9 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
